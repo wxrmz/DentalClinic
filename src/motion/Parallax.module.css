@@ -1,0 +1,17 @@
+@media (pointer: coarse) and (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .touch {
+      animation: parallaxDrift linear both;
+      animation-timeline: view();
+    }
+  }
+}
+
+@keyframes parallaxDrift {
+  from {
+    translate: 0 calc(var(--parallax-speed, 0) * var(--parallax-range, 30vh) * -1 + var(--parallax-shift, 0px));
+  }
+  to {
+    translate: 0 calc(var(--parallax-speed, 0) * var(--parallax-range, 30vh) + var(--parallax-shift, 0px));
+  }
+}

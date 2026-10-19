@@ -1,0 +1,81 @@
+.root {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  background: linear-gradient(180deg, #f7fcfa 0%, #f2faf7 50%, #f6fbfa 100%);
+}
+
+.native {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+@media (pointer: coarse) and (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: scroll()) {
+    .native .track {
+      animation: pageFogDepth linear both;
+      animation-timeline: scroll(root);
+    }
+  }
+}
+
+@keyframes pageFogDepth {
+  to {
+    translate: 0 var(--fog-depth, 0px);
+  }
+}
+
+.track {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  will-change: transform;
+}
+
+.wrap {
+  position: absolute;
+  top: calc(var(--y) - var(--size) / 2);
+  left: calc(var(--x) - var(--size) / 2);
+  width: var(--size);
+  height: var(--size);
+  will-change: transform;
+}
+
+.wrap[data-off] {
+  display: none;
+}
+
+.blob {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, var(--color) 0%, transparent 100%);
+  animation: pageFogDrift var(--dur) ease-in-out var(--delay) infinite;
+  will-change: transform;
+}
+
+@keyframes pageFogDrift {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(4%, -3%) scale(1.08);
+  }
+  66% {
+    transform: translate(-3%, 4%) scale(0.94);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blob {
+    animation: none;
+  }
+}

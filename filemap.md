@@ -1,0 +1,38 @@
+# File map
+
+- `CLAUDE.md` — agent rules: commands, conventions
+- `docs/SPEC.md` — product + design spec (source of truth)
+- `docs/CREDITS.md` — photo credits
+- `package.json` — scripts (dev, build, preview, lint, typecheck) and deps
+- `index.html` — HTML entry (lang=ru, title, theme-color) + inline boot screen shown before JS
+- `vite.config.ts`, `tsconfig*.json` — Vite + strict TS config
+- `eslint.config.js`, `.prettierrc.json` — lint/format config
+- `.claude/launch.json` — dev server config for preview
+- `public/images/` — about-1..2.jpg (credits in docs/CREDITS.md)
+- `src/main.tsx` — entry: fonts, styles, mounts App inside `SmoothScrollProvider`
+- `src/App.tsx` — page order: PageFog, Preloader, Header, main(Hero, About, Services, Prices, Doctors, Reviews, Contacts, Faq), Footer
+- `src/vite-env.d.ts` — Vite types + `*.glsl` / `*.glsl?raw` module declarations
+- `src/styles/tokens.css` — design tokens (CSS variables)
+- `src/styles/global.css` — reset, typography, .container, .eyebrow, .on-dark, .btn-fx, focus ring
+- `src/styles/boot-font.css` — 'Unbounded Boot' (font-display: block) for the boot/Preloader logo; linked from index.html so the logo never renders in a fallback font first
+- `src/styles/ruble.css` — the ₽ glyph (U+20BD only) from the Unbounded/Onest latin-ext files, so the ruble sign is drawn in the site fonts, not a system fallback
+- `src/content/` — typed Russian copy/data: `types.ts` (interfaces), `clinic.ts` (contacts, hero, about, nav), `services.ts`, `doctors.ts`, `prices.ts`, `calculator.ts`, `reviews.ts`, `faq.ts`, `contacts.ts` (+footer), `index.ts` barrel
+- `src/motion/index.ts` — barrel for all motion helpers below
+- `src/motion/gsap.ts` — gsap + ScrollTrigger (registered once); import GSAP only from here
+- `src/motion/useMediaFlags.ts` — `useMediaFlags()` / `getMediaFlags()`: reducedMotion, coarsePointer, isMobile
+- `src/motion/SmoothScroll.tsx` — `SmoothScrollProvider` (Lenis↔gsap.ticker↔ScrollTrigger, global `#anchor` click routing, touch menu glide), `useSmoothScroll().scrollTo`
+- `src/motion/usePointer.ts` — `usePointer(ref?)`: smoothed pointer ref in −0.5…0.5, no re-renders
+- `src/motion/Parallax.tsx` — `<Parallax speed>` scrubbed scroll parallax
+- `src/motion/Parallax.module.css` — touch-only CSS scroll-driven version of the Parallax drift
+- `src/motion/Reveal.tsx` — `<Reveal as y delay stagger>` fade/lift on enter, once
+- `src/motion/Counter.tsx` — `<Counter value suffix decimals immediate delay>` ru-RU count-up
+- `src/motion/Fog.tsx`, `Fog.module.css` — `<Fog preset="dense|soft">` mint gradient + drifting blobs (cursor/scroll parallax)
+- `src/motion/PageFog.tsx`, `PageFog.module.css` — page-wide fog layer behind all sections (fixed on desktop, scrolling `.native` layer on touch)
+- `src/gl/ShaderCanvas.tsx` — `<ShaderCanvas fragment getUniforms>` shared WebGL1 runner (DPR cap, offscreen pause, reduced-motion static frame, error fallback)
+- `src/gl/shaders/tooth.frag.glsl` — hero tooth SDF shader
+- `src/components/Header/` — floating glass header, burger menu (mobile)
+- `src/components/Accordion/` — single-open accordion (FAQ)
+- `src/sections/<Name>/` — page sections, each `index.tsx` + `index.module.css`
+- `src/sections/Preloader/signals.ts` — 'preloader:done' / 'hero:ready' events with late-subscriber flag
+- `src/sections/Prices/Estimate.tsx` (+ `Estimate.module.css`) — sticky receipt (lines, total, installments, CTA); `format.ts` — rub/price/plural helpers
+- `src/sections/Doctors/ShapeAvatar.tsx` — flat SVG doctor avatars (per-doctor look presets)

@@ -1,0 +1,84 @@
+.root {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(120% 90% at 78% 30%, rgba(169, 226, 207, 0.75) 0%, rgba(169, 226, 207, 0) 60%),
+    radial-gradient(90% 80% at 12% 85%, rgba(140, 205, 235, 0.45) 0%, rgba(140, 205, 235, 0) 60%),
+    linear-gradient(#f6fbf9, #f6fbf9);
+  will-change: opacity, transform;
+}
+
+@supports (-webkit-touch-callout: none) {
+  .root {
+    position: absolute;
+    bottom: auto;
+    box-sizing: border-box;
+    height: calc(100vh + 160px);
+    height: calc(100lvh + 160px);
+    padding-bottom: 160px;
+    padding-bottom: calc(160px + 100lvh - 100svh);
+  }
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+
+.logo {
+  font-family: 'Unbounded Boot', var(--font-display);
+  font-weight: 500;
+  font-size: clamp(32px, 4vw, 44px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.dot {
+  color: var(--mint);
+}
+
+@media (max-width: 767px) {
+  .logo {
+    position: relative;
+    top: 12px;
+  }
+}
+
+.meter {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.track {
+  position: relative;
+  display: block;
+  width: 180px;
+  height: 4px;
+  border-radius: 4px;
+  overflow: hidden;
+  background: rgba(31, 42, 46, 0.12);
+}
+
+.line {
+  position: absolute;
+  inset: 0;
+  background: var(--mint);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.pct {
+  min-width: 4ch;
+  font-size: 15px;
+  line-height: 1;
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}

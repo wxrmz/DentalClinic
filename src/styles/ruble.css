@@ -1,0 +1,44 @@
+@font-face {
+  font-family: 'Unbounded';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url('../../node_modules/@fontsource/unbounded/files/unbounded-latin-ext-400-normal.woff2') format('woff2');
+  unicode-range: U+20BD;
+}
+
+@font-face {
+  font-family: 'Unbounded';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url('../../node_modules/@fontsource/unbounded/files/unbounded-latin-ext-500-normal.woff2') format('woff2');
+  unicode-range: U+20BD;
+}
+
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url('../../node_modules/@fontsource/onest/files/onest-latin-ext-400-normal.woff2') format('woff2');
+  unicode-range: U+20BD;
+}
+
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url('../../node_modules/@fontsource/onest/files/onest-latin-ext-500-normal.woff2') format('woff2');
+  unicode-range: U+20BD;
+}
+
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url('../../node_modules/@fontsource/onest/files/onest-latin-ext-600-normal.woff2') format('woff2');
+  unicode-range: U+20BD;
+}

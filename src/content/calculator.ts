@@ -1,0 +1,25 @@
+import type { CalculatorText } from './types';
+
+export const calculatorText: CalculatorText = {
+  title: 'Ваша смета',
+  searchLabel: 'Поиск по прайсу',
+  searchPlaceholder: 'Найти услугу: пломба, имплант, чистка…',
+  clear: 'Очистить поиск',
+  all: 'Все',
+  notFound: 'Ничего не нашли. Позвоните — подскажем, сколько это стоит.',
+  add: 'Добавить в смету',
+  remove: 'Убрать из сметы',
+  free: 'бесплатно',
+  from: 'от',
+  itemForms: ['услуга', 'услуги', 'услуг'],
+  toEstimate: 'Смета',
+  paymentLabel: 'Способ оплаты',
+  total: 'Итого, примерно',
+  cta: 'Записаться с этой сметой',
+  receiptTitle: 'Мята · смета',
+  empty: 'Нажмите «+» у услуги — она появится здесь',
+  payNow: 'Сразу',
+  months: [6, 12],
+  monthsSuffix: 'мес',
+  perMonth: 'в месяц, без переплаты',
+};

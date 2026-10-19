@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f6fbf9" />
+    <meta name="color-scheme" content="light" />
+    <title>Мята — семейная стоматология</title>
+    <link rel="stylesheet" href="/src/styles/boot-font.css" />
+    <style>
+      html {
+        background-color: #f6fbf9;
+      }
+      @supports (-webkit-touch-callout: none) {
+        html {
+          min-height: calc(100% + 1px);
+        }
+      }
+      #boot {
+        position: fixed;
+        inset: 0;
+        z-index: 101;
+        display: grid;
+        place-items: center;
+        background:
+          radial-gradient(120% 90% at 78% 30%, rgba(169, 226, 207, 0.75) 0%, rgba(169, 226, 207, 0) 60%),
+          radial-gradient(90% 80% at 12% 85%, rgba(140, 205, 235, 0.45) 0%, rgba(140, 205, 235, 0) 60%),
+          linear-gradient(#f6fbf9, #f6fbf9);
+      }
+      @supports (-webkit-touch-callout: none) {
+        #boot {
+          position: absolute;
+          bottom: auto;
+          box-sizing: border-box;
+          height: calc(100vh + 160px);
+          height: calc(100lvh + 160px);
+          padding-bottom: 160px;
+          padding-bottom: calc(160px + 100lvh - 100svh);
+        }
+      }
+      #boot .b-center { display: flex; flex-direction: column; align-items: center; gap: 28px; }
+      #boot .b-logo {
+        font: 500 clamp(32px, 4vw, 44px) / 1 'Unbounded Boot', 'Unbounded', system-ui, sans-serif;
+        letter-spacing: -0.02em;
+        color: #1f2a2e;
+      }
+      #boot .b-logo span { color: #2fb592; }
+      @media (max-width: 767px) {
+        #boot .b-logo { position: relative; top: 12px; }
+      }
+      #boot .b-meter { display: flex; align-items: center; gap: 14px; }
+      #boot .b-track { width: 180px; height: 4px; border-radius: 4px; background: rgba(31, 42, 46, 0.12); }
+      #boot .b-pct {
+        min-width: 4ch;
+        font: 15px/1 system-ui, sans-serif;
+        color: #5e6e72;
+        text-align: right;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="boot" aria-hidden="true">
+      <div class="b-center">
+        <div class="b-logo">мята<span>.</span></div>
+        <div class="b-meter"><span class="b-track"></span><span class="b-pct">0%</span></div>
+      </div>
+    </div>
+    <script>
+      if (CSS.supports('-webkit-touch-callout', 'none')) {
+        history.scrollRestoration = 'manual';
+        window.scrollTo(0, 1);
+      }
+    </script>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

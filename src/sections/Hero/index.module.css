@@ -1,0 +1,279 @@
+.root {
+  position: relative;
+  height: 100svh;
+  min-height: 640px;
+  overflow: hidden;
+}
+
+.tooth {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 0;
+  width: 58%;
+  height: 100%;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.toothLayer {
+  width: 100%;
+  height: 100%;
+}
+
+.canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding-top: 72px;
+}
+
+.text {
+  max-width: 720px;
+  will-change: transform, opacity;
+}
+
+.eyebrow {
+  margin-bottom: 20px;
+}
+
+.title {
+  margin-bottom: 24px;
+  font-size: clamp(40px, 5vw, 78px);
+}
+
+@media (min-width: 1024px) {
+  .line {
+    white-space: nowrap;
+  }
+}
+
+.line {
+  display: block;
+}
+
+.accent {
+  color: var(--mint);
+}
+
+.lead {
+  max-width: 440px;
+  margin-bottom: 36px;
+  font-size: clamp(17px, 1.3vw, 19px);
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: -3px;
+  margin-bottom: 45px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px var(--btn-px);
+  border-radius: var(--r-pill);
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 20.4px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btnPrimary {
+  --btn-px: 27.2px;
+  --fx-bg: var(--mint);
+  --fx-fg: var(--graphite);
+
+  background: var(--ink);
+  color: var(--white);
+}
+
+.btnSecondary {
+  --btn-px: 26.55px;
+  --fx-bg: var(--ink);
+  --fx-fg: var(--white);
+
+  border: 1px solid rgba(31, 42, 46, 0.15);
+  background: rgba(255, 255, 255, 0.55);
+  color: var(--ink);
+}
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  padding: 0;
+  list-style: none;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.statValue {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2em;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(24px, 2.2vw, 32px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.statCentered {
+  align-items: center;
+}
+
+.statStar {
+  flex: none;
+  width: 0.72em;
+  height: 0.72em;
+  color: var(--ink);
+  transform: translateY(-0.04em);
+}
+
+.statLabel {
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--ink-3);
+}
+
+@media (min-width: 1024px) {
+  .stats {
+    scale: 1.12;
+    transform-origin: left top;
+  }
+}
+
+@media (min-width: 1024px) {
+  .statLabel {
+    font-size: 16px;
+    line-height: 19.6px;
+    font-weight: 500;
+    color: var(--ink-2);
+  }
+}
+
+@media (max-width: 1023px) {
+  .tooth {
+    top: 16%;
+    width: 50%;
+    height: 72%;
+  }
+
+  .text {
+    max-width: 52%;
+  }
+}
+
+@media (max-width: 767px) {
+  .root {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: 100svh;
+    min-height: 100lvh;
+    padding-top: 72px;
+  }
+
+  .tooth {
+    position: relative;
+    top: auto;
+    right: auto;
+    flex: none;
+    width: 100%;
+    height: 39svh;
+  }
+
+  .tooth > .toothLayer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 112%;
+  }
+
+  .inner {
+    flex: 1;
+    align-items: flex-start;
+    height: auto;
+    padding-top: 4px;
+    padding-bottom: 48px;
+  }
+
+  .text {
+    max-width: none;
+  }
+
+  .eyebrow {
+    display: none;
+  }
+
+  .title {
+    margin-bottom: 16px;
+    font-size: 35px;
+  }
+
+  .lead {
+    margin-bottom: 16px;
+  }
+
+  .actions {
+    margin-bottom: 24px;
+  }
+
+  .actions .btn {
+    flex: 1 1 0;
+    justify-content: center;
+    padding-inline: 8px;
+  }
+
+  .stats {
+    justify-content: space-between;
+    gap: 28px;
+    padding-inline: 18px;
+  }
+
+  .stat {
+    align-items: center;
+  }
+
+  .statLabel {
+    color: var(--ink-2);
+    font-weight: 500;
+  }
+}
+
+@media (pointer: coarse) and (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: scroll()) {
+    .tooth {
+      animation: heroToothOut linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 100vh;
+    }
+  }
+}
+
+@keyframes heroToothOut {
+  to {
+    translate: 0 -8vh;
+    scale: 0.94;
+  }
+}

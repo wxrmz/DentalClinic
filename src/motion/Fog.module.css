@@ -1,0 +1,63 @@
+.root {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.dense {
+  background: radial-gradient(
+    150% 120% at 78% 45%,
+    #b4e6d6 0%,
+    rgba(211, 240, 230, 0.9) 30%,
+    rgba(234, 248, 243, 0.5) 55%,
+    transparent 80%
+  );
+  mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
+}
+
+.soft {
+  background: transparent;
+}
+
+.blobWrap {
+  position: absolute;
+  top: calc(var(--top) - var(--size) / 2);
+  left: calc(var(--left) - var(--size) / 2);
+  width: var(--size);
+  height: var(--size);
+  will-change: transform;
+}
+
+.blob {
+  width: calc(100% + 120px);
+  height: calc(100% + 120px);
+  margin: -60px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, var(--color) 45%, transparent 100%);
+  opacity: var(--opacity);
+  animation: drift var(--dur) ease-in-out var(--delay) infinite alternate;
+  will-change: transform, translate;
+}
+
+@keyframes drift {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(24px, -18px) scale(1.1);
+  }
+  66% {
+    transform: translate(-22px, 14px) scale(0.95);
+  }
+  100% {
+    transform: translate(-8px, -24px) scale(1.04);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blob {
+    animation: none;
+  }
+}
